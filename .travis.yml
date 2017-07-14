@@ -2,19 +2,19 @@ language: java
 sudo: false
 install: true
 addons:
-  sonarqube:
+  sonarcloud:
     organization: divyakumarjain-github
   github_token:
-    secure: uUvHJtNG6LP0+X1pLMovS4tLiI9OoBqnmTajM1856adukOv5wxEZARnR7SD8zGSDNFTfxBhqT0QY3FHoEqdERYlOfIxwABlyy6kYPlgjMpWAs9ilMTIbDetGpMzThnPfVRzPme+Wffz8TBY9KePS2WK6wfcg6RNDb3PMn30P3PNBw56uW2v1ZmcqUY98XctLvJ31+ljMXnek6XKzUK+NCFKdEmtaMZfsRcVDRtS1xlXm/UXRH3J13uHiiRs4rbR9KIn5bJQ82roerQnf7jBazhTDGxNmPVtYB9HHEOUciW/lpDPyqeW5t4heh0z1nveFsOiskgn4Sh+ora8sxML7MqHv/3sTH26KnoZKd/DGhNiSY+WwuezyOcJ97EK3q9Htl0ZNPjosdlhiaZTGz/3b0nA52ziTnkzJl/joBiGv/ZPmhPXPZtBhSRC3+X5LVks/jOtUMnSpMBEE41eVTsHw8MmQ5YZw/bfeA5d9CNzkuXJzFI4ekqCelfbtk3WODI+faIh/UsuLx/Vz5hrk+SvabEmqrIZMcI116eZHJEJzcTtteJQPpRqElW7j2Ng73VY6YepBQ8eZg/oEsFirM9F8M3gra+i4oQ+33aKFvSIzeX9teNw5D0MoKQ+5b4o7wGd4NmavNNOJe5MFoQvTonh/u600vWypiAOxWYcsghfy6SA=
+    secure: "loro7lOd+8yalW+AZ3GJqgNw/LbFF85yf0NQv/fwfl8icwrz+UFn6dPHe/oyVgTGG2KwByyJcttIsiqCsX5AfMvar+y7BB+cdOEzGLozDlyLVMpKA+41ZLYbQcOTCUEYIxmlpcB+JqYMJTP6RjB6ddwSw3HgzLMdGT0Url8ufyHag/JLXXQiO5SgyzOGvdEL6NChKRH7feqjFXio1vzmAYrNGEb1/I4+tjwJDU33STHtx/K+YTbeo7e2bNwJJFJc/g/URiKMAOGT2uuZ3tXHOd6g5hCltVI4uNSn7ZLXHWEhit7GBejGXFhfXW06j/clBwlCi17lpQ066FUGXyWP7nW1VWUa06dXBhTbggYEX6cw2+35aNv5IZxrH8vxCSjMjqvFv4Q0chZawMP+9kx3whnA/VmD4oTWvSDE0ltNHtwtxYl8Uuqvl6Uq9/tMN995IlWp34tpI9P1JmEQkh3M7Yh9p4klFt1s2QWI7DYPqLhWpRRHcz+VBjT1pSFhPaAiIa69KGdtrCfMNswkOZ9LP2Hr5uuzji2baqW5swz8GV57p9zXgmzArEOGLuHtwgymSbsQi90+iF7MF3PEpczdSPwdD9SclYPDE7imXxweMo+uhQFeOQg9e6CrGJYy81P9KqIH/xJLvy5qWWOJsbR/cVbxtTUs2HmeY86q6Xh3ACs="
+
 jdk:
-- oraclejdk8
+  - oraclejdk8
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dmaven.test.failure.ignore=true
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dmaven.test.failure.ignore=true
+
 cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 notifications:
   email: false
-
-

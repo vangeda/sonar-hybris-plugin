@@ -7,7 +7,7 @@ import de.hybris.platform.servicelayer.product.ProductDao; // Compliant
 /**
  * Class which is not a Controller, Facade nor Service
  */
-public class HybrisCheckModelUsage {
+public class HybrisCheckNoUsageIssue {
 
     private CatalogModel classMemberModel = null; // Compliant
     UserService classMemberService; // Compliant

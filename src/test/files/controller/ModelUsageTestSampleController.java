@@ -5,7 +5,7 @@ import de.hybris.platform.catalog.model.CatalogModel; // Noncompliant {{Refactor
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class HybrisControllerCheckModelUsage {
+public class ModelUsageTestSampleController {
 
     CatalogModel unInitializedclassMemberModel; // Noncompliant {{Refactor Controller to use DTO from request or a facade instead of using models}}
     CatalogModel initializedClassMemberModel = new CatalogModel(); // Noncompliant {{Refactor Controller to use DTO from request or a facade instead of using models}}
