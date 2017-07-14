@@ -14,5 +14,5 @@ Licensed under the Apache License, Version 2.0
 
 ## Developer Guide lines
 
-https://docs.sonarqube.org/display/DEV/Coding+Rule+Guidelines
-https://docs.sonarqube.org/display/PLUG/Custom+Rules+for+Java
+* https://docs.sonarqube.org/display/DEV/Coding+Rule+Guidelines
+* https://docs.sonarqube.org/display/PLUG/Custom+Rules+for+Java
