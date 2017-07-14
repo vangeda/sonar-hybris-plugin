@@ -6,10 +6,10 @@ public class DaoUsageTestSampleController {
 
     ProductDao classMemberDao; // Noncompliant {{Refactor Controller to use facade instead of dao directly}}
 
-    void nonComplientMethod() {
+    void nonCompliantMethod() {
         ProductDao localDao; // Noncompliant {{Refactor Controller to use facade instead of dao directly}}
     }
 
-    void complientMethod() {
+    void compliantMethod() {
     }
 }

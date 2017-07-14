@@ -7,10 +7,10 @@ public class ServiceUsageTestSampleController {
 
     UserService classMemberModel; // Noncompliant {{Refactor Controller to use facade instead of service directly}}
 
-    void nonComplientMethod() {
+    void nonCompliantMethod() {
         UserService userService; // Noncompliant {{Refactor Controller to use facade instead of service directly}}
     }
 
-    void complientMethod() {
+    void compliantMethod() {
     }
 }
