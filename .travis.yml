@@ -1,28 +1,20 @@
 language: java
 sudo: false
 install: true
-
 addons:
-  sonarqube: true
-
-env:
-  global:
-    - secure: "ugMGnYfAukzT1GuqhPTT5WeR3dPUtZQ6/QAu8ayq/OCalLGywAbFsTpSoeQfRZ9zj1n0u6tCq7xc+fSstwdn5v8ODhXCo5G7yzXgoPKYf+kJL/PU1gSe2RIMuJSLx5Jz8KVTOOetMJxZ1yRMHCCsAqG+ItSSHsu1nyH3D8ViqD15FXt5SHLyQ+QV8ro+0TA1I/aLaE/UKc+TPd65AJmjVq+EBvzxNT+WWsmepR/SviyBebROnamin9DK8cRvIH7OWYVtf4hB3X5yEv3BiBezUHvHCqvpQ4meZbcnidpLyG4IKT66OvvjXqieJUSTYNMX/eIgYkUqC3jtab6fH/+DKgOTCFP2B/GJsesWw11i97xMBSKt7kuTtdxcuQowqezpw6z3TNDownN1J9FhBRCK1V19LXECHWg+ofy7yXOvjeN9UXXi9PaDVK5ZTVQwgbJfA6diSZ3Z1qteu/bwFSu27Qyw5/JhAnVhzTRZAxnMyA9+AS9YnHrXFg29oxCtdhYVLGz0QyFudmaCbTUzOY3dg/s+4TXa7dP3bP3cka2w3fuqzSnbWKzEhfenDoGfEEIt6Ab3k9MOjRQtRQiIx30IKGQVH6u9vDrXCmaPWlk5aFKwyKAQUhfmJ9PdRNLErQwgU9Ak9nfLnFuwQksNSDmOPcBW9g9DDrIIDsJ1LsH8UN4="
-
+  sonarqube:
+    organization: divyakumarjain-github
+  github_token:
+    secure: uUvHJtNG6LP0+X1pLMovS4tLiI9OoBqnmTajM1856adukOv5wxEZARnR7SD8zGSDNFTfxBhqT0QY3FHoEqdERYlOfIxwABlyy6kYPlgjMpWAs9ilMTIbDetGpMzThnPfVRzPme+Wffz8TBY9KePS2WK6wfcg6RNDb3PMn30P3PNBw56uW2v1ZmcqUY98XctLvJ31+ljMXnek6XKzUK+NCFKdEmtaMZfsRcVDRtS1xlXm/UXRH3J13uHiiRs4rbR9KIn5bJQ82roerQnf7jBazhTDGxNmPVtYB9HHEOUciW/lpDPyqeW5t4heh0z1nveFsOiskgn4Sh+ora8sxML7MqHv/3sTH26KnoZKd/DGhNiSY+WwuezyOcJ97EK3q9Htl0ZNPjosdlhiaZTGz/3b0nA52ziTnkzJl/joBiGv/ZPmhPXPZtBhSRC3+X5LVks/jOtUMnSpMBEE41eVTsHw8MmQ5YZw/bfeA5d9CNzkuXJzFI4ekqCelfbtk3WODI+faIh/UsuLx/Vz5hrk+SvabEmqrIZMcI116eZHJEJzcTtteJQPpRqElW7j2Ng73VY6YepBQ8eZg/oEsFirM9F8M3gra+i4oQ+33aKFvSIzeX9teNw5D0MoKQ+5b4o7wGd4NmavNNOJe5MFoQvTonh/u600vWypiAOxWYcsghfy6SA=
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN
-
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dmaven.test.failure.ignore=true
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
-
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
 notifications:
   email: false
-  webhooks:
-    urls:
-      - secure: "HugjGQzANUh3n5AM0/ASUfGbxRWOJmq0FnyUkIHlA4EXDzKVLoaML1HA7eU6ueMSVRRQ5ExkKTrwY+vcEFaMRyrpIxdeAnmWxKQve8qSORyyB8YIQaI8KkCLCHSLxYkGbGexIESuXtxtHY+fWFHLfWUIXHR6XQs2321GJbkaqJfhO9mC0Z4bK3YAPR2DJrIVU0uZwfY728+PPGFvzZRAFbN3m6Yg/Mtju3gxNByAh8nRUS/zVH0Jww6OpDpZ8T5kiiRnzYiF9Ea/EvzMC1+tPxntRx6M48I+bzmNS7T7bTO+nEHgd6cpWJA3PDbiaEA8Vvks+ukFmgTRYX76bAuaXR6yXP5z1mKgNUqotB1ANGsx5Od5RHgSpD++XgctMhyl17tfFLk9hIqCphu96jPkuyAgvNYZHwnJ/2ZVDH+bPFEfZ9dzyUWMi4vzMz1MjAQVZo/ko8QimJcNgRED8LGaJeemtCuuosnt8ZKdy9PrjJgNA/BpgDL8dkwZCiz6ks8NxsbsFEXMGPN7NJvamC3Oe/FU3kv9b2RRgFge8OQm8zwGo079l82GZYrbtq6r0Fu1Tt7mWzEE5N6WgmwAWyydmkQkTxfFAPj/hJM0H+49VFE7khQsPexSwFxMsDTW7o7W0sOeKXpwI6KTW0BsUeG0JKvjICEb6Ap9nFVob2SC7CI="
-    on_start: always
+
+
