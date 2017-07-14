@@ -130,7 +130,7 @@
         <configuration>
           <pluginKey>java-custom</pluginKey>
           <pluginName>Java Custom Rules</pluginName>
-          <pluginClass>org.divy.sonar.hybris.java.HybrisRulesPlugin</pluginClass>
+            <pluginClass>org.divy.sonar.check.java.hybris.HybrisRulesPlugin</pluginClass>
           <sonarLintSupported>true</sonarLintSupported>
           <sonarQubeMinVersion>5.6</sonarQubeMinVersion> <!-- allow to depend on API 6.x but run on LTS -->
         </configuration>
