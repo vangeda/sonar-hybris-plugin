@@ -1,6 +1,6 @@
 
 [![Build Status](https://travis-ci.org/divyakumarjain/sonar-hybris-plugin.svg?branch=master)](https://travis-ci.org/divyakumarjain/sonar-hybris-plugin)
-[![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.cognifide.aemrules%3Aaemrules)](https://sonarqube.com/dashboard?id=com.cognifide.aemrules%3Aaemrules)
+[![Quality Gate](https://sonarqube.com/api/badges/gate?key=org.divy%3Asonar-hybris-plugin)](https://sonarqube.com/dashboard?id=com.cognifide.aemrules%3Aaemrules)
 # About Hybris Rules for SonarQube
 
 
