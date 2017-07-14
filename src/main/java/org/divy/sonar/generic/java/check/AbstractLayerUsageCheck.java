@@ -1,4 +1,4 @@
-package org.divy.sonar.hybris.java.checks;
+package org.divy.sonar.generic.java.check;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,21 +9,28 @@ import org.sonar.plugins.java.api.tree.*;
 import java.util.List;
 
 public abstract class AbstractLayerUsageCheck extends BaseTreeVisitor implements JavaFileScanner {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HybrisControllerModelUsageCheck.class);
-    private JavaFileScannerContext context;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected JavaFileScannerContext context;
 
     @Override
     public void scanFile(JavaFileScannerContext context) {
         this.context = context;
-
         scan(context.getTree());
     }
 
     @Override
     public void visitImport(ImportTree importTree) {
+        Tree importQualifier = importTree.qualifiedIdentifier();
 
-        if(isTargetedCompilationUnit(importTree.parent()) && isRestricted(importTree.qualifiedIdentifier())) {
-            context.reportIssue(this, importTree.qualifiedIdentifier(), getMessage(importTree));
+        if(logger.isDebugEnabled()) {
+            logger.debug("visiting import :", importQualifier.toString());
+        }
+
+        if(isTargetedCompilationUnit(importTree.parent()) && isRestricted(importQualifier)) {
+            if(logger.isDebugEnabled()) {
+                logger.debug("Found restricted import :", importQualifier.toString());
+            }
+            context.reportIssue(this, importQualifier, getMessage(importTree));
         }
         super.visitImport(importTree);
     }
@@ -67,7 +74,7 @@ public abstract class AbstractLayerUsageCheck extends BaseTreeVisitor implements
         return isTargetedType(classTree);
     }
 
-    abstract protected boolean isTargetedType(ClassTree classType);
-    abstract protected boolean isRestricted(Tree tree);
-    abstract protected String getMessage(Tree tree);
+    protected abstract boolean isTargetedType(ClassTree classType);
+    protected abstract boolean isRestricted(Tree tree);
+    protected abstract String getMessage(Tree tree);
 }
