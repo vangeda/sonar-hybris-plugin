@@ -22,25 +22,17 @@ package org.divy.sonar.hybris.java.checks;
 import org.junit.Test;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
-public class HybrisControllerCheckTest {
+public class HybrisControllerModelUsageCheckTest {
 
   @Test
   public void checkModelUsage() {
-    JavaCheckVerifier.verify("src/test/files/controller/HybrisControllerCheckModelUsage.java", new HybrisControllerCheck());
+    JavaCheckVerifier.verify("src/test/files/controller/HybrisControllerCheckModelUsage.java"
+            , new HybrisControllerModelUsageCheck());
   }
 
-//  @Test
-//  public void checkServiceUsage() {
-//    JavaCheckVerifier.verify("src/test/files/HybrisControllerServiceUsage.java", new HybrisControllerCheck());
-//  }
-//
-//  @Test
-//  public void checkDaoUsage() {
-//    JavaCheckVerifier.verify("src/test/files/HybrisControllerCheckTest.java", new HybrisControllerCheck());
-//  }
-//
-//  @Test
-//  public void checkHtmlUsage() {
-//    JavaCheckVerifier.verify("src/test/files/HybrisControllerCheckTest.java", new HybrisControllerCheck());
-//  }
+  @Test
+  public void checkNoIssue() {
+    JavaCheckVerifier.verifyNoIssue("src/test/files/controller/HybrisCheckModelUsage.java"
+            , new HybrisControllerModelUsageCheck());
+  }
 }

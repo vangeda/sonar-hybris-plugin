@@ -1,0 +1,19 @@
+<p>This rule detects direct usage of DAOs in Controller. In Hybris Controller should only interact with Facades and DTO. </p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+
+@Controller
+public class HybrisControllerCheckModelUsage {
+...
+    ProductDao productDao; // Noncompliant
+...
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+@Controller
+public class HybrisControllerCheckModelUsage {
+...
+    ProductFacade productFacade; // Compliant
+}
+</pre>

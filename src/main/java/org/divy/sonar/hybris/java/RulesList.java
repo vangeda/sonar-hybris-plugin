@@ -21,6 +21,10 @@ package org.divy.sonar.hybris.java;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
+
+import org.divy.sonar.hybris.java.checks.HybrisControllerDaoUsageCheck;
+import org.divy.sonar.hybris.java.checks.HybrisControllerModelUsageCheck;
+import org.divy.sonar.hybris.java.checks.HybrisControllerServiceUsageCheck;
 import org.sonar.plugins.java.api.JavaCheck;
 import org.divy.sonar.hybris.java.samples.checks.AvoidAnnotationRule;
 import org.divy.sonar.hybris.java.samples.checks.AvoidBrandInMethodNamesRule;
@@ -42,14 +46,9 @@ public final class RulesList {
 
   public static List<Class<? extends JavaCheck>> getJavaChecks() {
     return ImmutableList.<Class<? extends JavaCheck>>builder()
-      .add(SpringControllerRequestMappingEntityRule.class)
-      .add(AvoidAnnotationRule.class)
-      .add(AvoidBrandInMethodNamesRule.class)
-      .add(AvoidMethodDeclarationRule.class)
-      .add(AvoidSuperClassRule.class)
-      .add(AvoidUnmodifiableListRule.class)
-      .add(MyCustomSubscriptionRule.class)
-      .add(SecurityAnnotationMandatoryRule.class)
+      .add(HybrisControllerDaoUsageCheck.class)
+      .add(HybrisControllerServiceUsageCheck.class)
+      .add(HybrisControllerModelUsageCheck.class)
       .build();
   }
 

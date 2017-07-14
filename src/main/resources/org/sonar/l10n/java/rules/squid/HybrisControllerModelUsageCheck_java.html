@@ -1,0 +1,26 @@
+<p>This rule detects direct usage of Models in Controller. In Hybris Controller should only interact with Facades and DTO. </p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+
+@Controller
+public class HybrisControllerCheckModelUsage {
+...
+    void nonCompliantMethod() {
+    CatalogModel localCatalog; // Noncompliant
+    ...
+    }
+
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+@Controller
+public class HybrisControllerCheckModelUsage {
+...
+    void nonCompliantMethod() {
+    CatalogDTO localCatalog; // Compliant
+    ...
+    }
+
+}
+</pre>
