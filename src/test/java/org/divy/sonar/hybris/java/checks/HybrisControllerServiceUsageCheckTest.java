@@ -32,6 +32,6 @@ public class HybrisControllerServiceUsageCheckTest {
 
   @Test
   public void checkServiceUsage() {
-    JavaCheckVerifier.verify("src/test/files/controller/HybrisControllerServiceUsage.java", new HybrisControllerServiceUsageCheck());
+    JavaCheckVerifier.verify("src/test/files/controller/ServiceUsageTestSampleController.java", new HybrisControllerServiceUsageCheck());
   }
 }

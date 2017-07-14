@@ -26,7 +26,7 @@ public class HybrisControllerDaoUsageCheck extends AbstractLayerUsageCheck {
     @Override
     protected boolean isRestricted(Tree tree) {
         String typeName = tree.lastToken().text();
-        return typeName.contains("Dao") || typeName.contains("DAO");
+        return typeName.toLowerCase().endsWith("dao");
     }
 
     @Override
