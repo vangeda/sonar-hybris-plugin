@@ -1,5 +1,6 @@
 package org.divy.sonar.hybris.java.checks;
 
+import org.divy.sonar.generic.java.check.AbstractLayerUsageCheck;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.tree.*;
