@@ -20,13 +20,13 @@ public class HybrisControllerServiceUsageCheck extends AbstractLayerUsageCheck {
     @Override
     protected boolean isTargetedType(ClassTree type) {
         return isAnnotatedWith(type, SPRING_CONTROLLER_ANNOTATION)
-                || (type).simpleName().name().contains("Controller");
+                || (type).simpleName().name().endsWith("Controller");
     }
 
     @Override
     protected boolean isRestricted(Tree tree) {
         String typeName = tree.lastToken().text();
-        return typeName.contains("Service") || typeName.contains("Service");
+        return typeName.toLowerCase().endsWith("service");
     }
 
     @Override
