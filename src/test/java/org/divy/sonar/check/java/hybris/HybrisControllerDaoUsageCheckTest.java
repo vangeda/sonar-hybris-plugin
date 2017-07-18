@@ -15,4 +15,9 @@ public class HybrisControllerDaoUsageCheckTest {
   public void checkDaoUsage() {
       JavaCheckVerifier.verify("src/test/files/controller/DaoUsageTestSampleController.java", new HybrisControllerDaoUsageCheck());
   }
+
+  @Test
+  public void checkDaoUpperCaseUsage() {
+      JavaCheckVerifier.verify("src/test/files/controller/DaoUpperCaseUsageTestSampleController.java", new HybrisControllerDaoUsageCheck());
+  }
 }

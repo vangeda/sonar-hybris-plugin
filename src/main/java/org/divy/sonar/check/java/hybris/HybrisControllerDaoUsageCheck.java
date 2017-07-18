@@ -20,13 +20,13 @@ public class HybrisControllerDaoUsageCheck extends AbstractLayerUsageCheck {
     private static final String SPRING_CONTROLLER_ANNOTATION = "org.springframework.stereotype.Controller";
     private static final String MESSAGE = "Refactor Controller to use facade instead of dao directly";
 
-    private static final Pattern TARGET_TYPE_NAME_MATCH = Pattern.compile("(.)*Controller$");
-    private static final Pattern RESTRICTED_TYPE_NAME_MATCH = Pattern.compile("(.)*(dao|Dao)$");
+    private static final Pattern TARGET_TYPE_NAME_MATCH = Pattern.compile("(.)*Controller$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern RESTRICTED_TYPE_NAME_MATCH = Pattern.compile("(.)*dao$", Pattern.CASE_INSENSITIVE);
 
     @Override
     protected boolean isTargetedType(ClassTree type) {
-        return isAnnotatedWith(type, SPRING_CONTROLLER_ANNOTATION)
-                || hasTargetedTypeName(type);
+    	return isAnnotatedWith(type, SPRING_CONTROLLER_ANNOTATION);
+                //|| hasTargetedTypeName(type);
     }
 
     @Override
