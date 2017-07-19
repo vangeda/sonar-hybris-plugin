@@ -1,6 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/divyakumarjain/sonar-hybris-plugin.png?label=ready&title=Ready)](https://waffle.io/divyakumarjain/sonar-hybris-plugin?utm_source=badge)
 [![Build Status](https://travis-ci.org/divyakumarjain/sonar-hybris-plugin.svg?branch=master)](https://travis-ci.org/divyakumarjain/sonar-hybris-plugin)
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=org.divy%3Asonar-hybris-plugin)](https://sonarqube.com/dashboard?id=org.divy%3Asonar-hybris-plugin)
+[![Gitter](https://badges.gitter.im/sonar-hybris-plugin.svg)](https://gitter.im/sonar-hybris-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 # About Hybris Rules for SonarQube
 
 

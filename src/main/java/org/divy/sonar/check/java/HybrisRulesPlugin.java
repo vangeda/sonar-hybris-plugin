@@ -1,6 +1,7 @@
 
-package org.divy.sonar.check.java.hybris;
+package org.divy.sonar.check.java;
 
+import org.divy.sonar.check.java.hybris.HybrisFileCheckRegistrar;
 import org.sonar.api.Plugin;
 
 /**

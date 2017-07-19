@@ -1,5 +1,5 @@
 
-package org.divy.sonar.check.java.hybris;
+package org.divy.sonar.check.java;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Iterables;

@@ -1,5 +1,7 @@
 package org.divy.sonar.check.java.hybris;
 
+import org.divy.sonar.check.java.HybrisRulesDefinition;
+import org.divy.sonar.check.java.RulesList;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinition.Param;
