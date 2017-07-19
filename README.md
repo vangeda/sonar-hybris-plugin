@@ -14,5 +14,22 @@ Licensed under the Apache License, Version 2.0
 
 ## Developer Guide lines
 
+Following are guideline for writing plugin for Sonar
+
 * https://docs.sonarqube.org/display/DEV/Coding+Rule+Guidelines
 * https://docs.sonarqube.org/display/PLUG/Custom+Rules+for+Java
+
+
+For writing better commit message Leverage commitizen when doing git commit and raising Pull request.
+
+http://commitizen.github.io/cz-cli/
+
+```
+npm install
+
+npm install commitizen -g
+
+//For Windows use "%userprofile%\.czrc" instead of  ~/.czrc
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+
+```
