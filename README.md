@@ -14,6 +14,13 @@ SonarQube is a leading tool to monitor code quality. This plugin helps monitor c
 # License
 Licensed under the Apache License, Version 2.0
 
+## Installation
+
+```commandline
+mvn package
+cp ./target/sonar-hybris-plugin-<version>.jar /opt/sonarqube/extensions/plugins
+```
+
 ## Developer Guide lines
 
 Following are guideline for writing plugin for Sonar
