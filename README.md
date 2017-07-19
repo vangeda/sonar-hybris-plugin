@@ -24,11 +24,25 @@ For writing better commit message Leverage commitizen when doing git commit and 
 
 http://commitizen.github.io/cz-cli/
 
-```
+```commandline
 npm install
 
 npm install commitizen -g
 
 commitizen init cz-conventional-changelog
 
+```
+
+Commits can generated using following command
+
+```commandline
+git cz
+```
+Change logs can be generated when releasing by running below command
+
+```commandline
+// Need to run this if conventional-changelog is not already installed 
+npm install -g conventional-changelog-cli  
+
+conventional-changelog -p angular -i CHANGELOG.md -s 
 ```
