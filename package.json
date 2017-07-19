@@ -1,0 +1,25 @@
+{
+  "name": "sonar-hybris-plugin",
+  "version": "0.0.1",
+  "description": "Hybris Plugin for SonarQube",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyakumarjain/sonar-hybris-plugin.git"
+  },
+  "keywords": [
+    "Hybris",
+    "Sonarqube"
+  ],
+  "bugs": {
+    "url": "https://github.com/divyakumarjain/sonar-hybris-plugin/issues"
+  },
+  "homepage": "https://github.com/divyakumarjain/sonar-hybris-plugin#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

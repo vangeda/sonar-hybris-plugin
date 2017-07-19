@@ -29,7 +29,6 @@ npm install
 
 npm install commitizen -g
 
-//For Windows use "%userprofile%\.czrc" instead of  ~/.czrc
-echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+commitizen init cz-conventional-changelog
 
 ```
