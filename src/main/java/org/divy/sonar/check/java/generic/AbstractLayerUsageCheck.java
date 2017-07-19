@@ -23,14 +23,14 @@ public abstract class AbstractLayerUsageCheck extends BaseTreeVisitor implements
         Tree importQualifier = importTree.qualifiedIdentifier();
 
         if(logger.isDebugEnabled()) {
-            logger.debug("visiting import :", importQualifier.lastToken().text());
+            logger.debug("visiting import : " + importQualifier.lastToken().text());
         }
 
         if(isTargetedCompilationUnit(importTree.parent()) && isRestricted(importQualifier)) {
             if(logger.isDebugEnabled()) {
-                logger.debug("Found restricted import :", importQualifier.toString());
+                logger.debug("Found restricted import : " + importQualifier.lastToken().text());
             }
-            context.reportIssue(this, importQualifier, getMessage(importTree));
+            context.reportIssue(this, importQualifier, getMessage(importQualifier));
         }
         super.visitImport(importTree);
     }
@@ -55,7 +55,7 @@ public abstract class AbstractLayerUsageCheck extends BaseTreeVisitor implements
     @Override
     public void visitVariable(VariableTree tree) {
         if(isTargetedChild(tree) && isRestricted(tree.type())) {
-            context.reportIssue(this, tree, getMessage(tree));
+            context.reportIssue(this, tree, getMessage(tree.type()));
         }
         super.visitVariable(tree);
     }

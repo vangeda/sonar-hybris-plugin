@@ -1,11 +1,11 @@
 package org.divy.sonar.hybris.java.checks;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import org.sonar.java.checks.verifier.JavaCheckVerifier; // Compliant
 import de.hybris.platform.servicelayer.product.ProductDAO; // Noncompliant {{Refactor Controller to use facade instead of dao directly}}
 
-@Controller
-public class DaoUsageTestSampleController {
+@RestController
+public class DaoUsageTestSampleRestController {
 
 	ProductDAO classMemberDAO; // Noncompliant {{Refactor Controller to use facade instead of dao directly}}
 

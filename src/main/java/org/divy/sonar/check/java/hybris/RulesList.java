@@ -17,9 +17,7 @@ public final class RulesList {
 
   public static List<Class<? extends JavaCheck>> getJavaChecks() {
     return ImmutableList.<Class<? extends JavaCheck>>builder()
-      .add(HybrisControllerDaoUsageCheck.class)
-      .add(HybrisControllerServiceUsageCheck.class)
-      .add(HybrisControllerModelUsageCheck.class)
+      .add(HybrisControllerUsageCheck.class)
       .build();
   }
 
