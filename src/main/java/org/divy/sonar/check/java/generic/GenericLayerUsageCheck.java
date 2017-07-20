@@ -5,6 +5,7 @@ import org.sonar.check.Rule;
 import org.sonar.check.RuleProperty;
 import org.sonar.plugins.java.api.tree.ClassTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.squidbridge.annotations.RuleTemplate;
 
 import java.util.regex.Pattern;
 
@@ -15,19 +16,23 @@ import java.util.regex.Pattern;
         tags = {"hybris"},
         description = "Use objects from immediate layer instead of skipping layers"
 )
+@RuleTemplate
 public class GenericLayerUsageCheck extends AbstractLayerUsageCheck {
 
     private static final String MESSAGE = "Refactor %1$s to not use %2$s directly";
-    @RuleProperty(
-            description = "Name of the annotation to avoid, without the prefix @, for instance 'Override'")
-    protected String targetTypeNameMatch;
-    @RuleProperty(description = "Name of the annotation to avoid, without the prefix @, for instance 'Override'")
-    protected String restrictedTypeNameMatch;
-    @RuleProperty(
-            description = "Name of the annotation to avoid, without the prefix @, for instance 'Override'")
-    protected String targetTypeName;
-    @RuleProperty(description = "Name of the annotation to avoid, without the prefix @, for instance 'Override'")
-    protected String restrictedTypeName;
+
+    @RuleProperty(description = "Pattern to match the Architecture layer where the check needs to be performed")
+    String targetTypeNameMatch;
+
+    @RuleProperty(description = "Pattern to match restricted layer to be checked")
+    String restrictedTypeNameMatch;
+
+    @RuleProperty(description = "Human readable name of Architecture layer where the check needs to be performed")
+    String targetTypeName;
+
+    @RuleProperty(description = "Human readable name of restricted layer")
+    String restrictedTypeName;
+
     private Pattern targetTypeNameMatchPattern;
     private Pattern restrictedTypeNameMatchPattern;
 

@@ -5,7 +5,7 @@
 
   <groupId>org.divy</groupId>
   <artifactId>sonar-hybris-plugin</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
 
@@ -128,9 +128,9 @@
         <version>1.17</version>
         <extensions>true</extensions>
         <configuration>
-          <pluginKey>java-custom</pluginKey>
-          <pluginName>Java Custom Rules</pluginName>
-            <pluginClass>org.divy.sonar.check.java.hybris.HybrisRulesPlugin</pluginClass>
+          <pluginKey>hybris</pluginKey>
+          <pluginName>Hybris Rules</pluginName>
+            <pluginClass>org.divy.sonar.check.java.HybrisRulesPlugin</pluginClass>
           <sonarLintSupported>true</sonarLintSupported>
           <sonarQubeMinVersion>5.6</sonarQubeMinVersion> <!-- allow to depend on API 6.x but run on LTS -->
         </configuration>

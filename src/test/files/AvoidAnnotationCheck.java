@@ -6,12 +6,12 @@ class AvoidAnnotationCheck {
 
   int aField;
 
-  @MyAnnotation
+  @MyAnnotation // Noncompliant {{Avoid using annotation @MyAnnotation}}
   public void aMethod() {
 
   }
 
-  @Zuper // Noncompliant {{Avoid using annotation @Zuper}}
+  @Zuper 
   public void aMethod() {
 
   }
