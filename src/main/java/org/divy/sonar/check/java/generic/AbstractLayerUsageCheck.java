@@ -62,9 +62,9 @@ public abstract class AbstractLayerUsageCheck extends BaseTreeVisitor implements
 
     private boolean isTargetedChild(Tree tree) {
         Tree possibleClass = tree;
-        while (possibleClass.parent()!=null) {
+        while (possibleClass.parent() != null) {
             possibleClass = possibleClass.parent();
-            if(possibleClass.is(Tree.Kind.CLASS)) {
+            if (possibleClass.is(Tree.Kind.CLASS)) {
                 break;
             }
         }
