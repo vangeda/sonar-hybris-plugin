@@ -7,8 +7,6 @@ import org.sonar.plugins.java.api.tree.VariableTree;
 
 public abstract class AbstractLayerUsageCheck extends AbstractTargetedCheck {
 
-
-
     @Override
     public void visitImport(ImportTree importTree) {
         Tree importQualifier = importTree.qualifiedIdentifier();
@@ -26,9 +24,6 @@ public abstract class AbstractLayerUsageCheck extends AbstractTargetedCheck {
         super.visitImport(importTree);
     }
 
-    protected boolean isAnnotatedWith(ClassTree it, String fullyQualifiedName) {
-        return it.symbol().metadata().isAnnotatedWith(fullyQualifiedName);
-    }
     @Override
     public void visitVariable(VariableTree tree) {
         if(isTargetedChild(tree) && isRestricted(tree.type())) {
@@ -39,5 +34,4 @@ public abstract class AbstractLayerUsageCheck extends AbstractTargetedCheck {
 
     protected abstract boolean isRestricted(Tree tree);
     protected abstract String getMessage(Tree tree);
-
 }

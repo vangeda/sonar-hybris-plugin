@@ -20,8 +20,7 @@ import java.util.regex.Pattern;
         description = "Not use String Literal with certain pattern"
 )
 @RuleTemplate
-public class GenericStringLiteralCheck extends AbstractTargetedCheck {
-
+public class GenericStringLiteralCheck extends AbstractStringLiteralCheck {
     private static final String HTML_PATTERN = "\"(</?(\\s*\"[^\"]*\"|'[^']*'|[^'\">])*>)+\"";
 
     @RuleProperty(description = "Human readable name of Architecture layer where the check needs to be performed")
@@ -38,23 +37,12 @@ public class GenericStringLiteralCheck extends AbstractTargetedCheck {
     private Pattern restrictedCompiledPattern;
 
     @Override
-    public void scanFile(JavaFileScannerContext context) {
-        this.context = context;
-        scan(context.getTree());
+    protected boolean hasTargetedTypeName(ClassTree type) {
+        return resolveTargetTypeNameMatchPattern().matcher(type.simpleName().name()).matches();
     }
 
     @Override
-    public void visitLiteral(LiteralTree tree) {
-        if (tree.is(Tree.Kind.STRING_LITERAL) && isTag(tree)) {
-            context.reportIssue(this, tree, String.format("Refactor %1s to nor use html tags directly and let view template define the tags", targetTypeName));
-        }
-    }
-
-    private boolean isTag(LiteralTree tree) {
-        return resolveRestrictedCompiledPattern().matcher(tree.value()).matches();
-    }
-
-    private Pattern resolveRestrictedCompiledPattern() {
+    public Pattern resolveRestrictedCompiledPattern() {
         if(restrictedCompiledPattern == null) {
             if(StringUtils.isEmpty(restrictedPattern)) {
                 restrictedPattern = HTML_PATTERN;
@@ -65,8 +53,8 @@ public class GenericStringLiteralCheck extends AbstractTargetedCheck {
     }
 
     @Override
-    protected boolean hasTargetedTypeName(ClassTree type) {
-        return resolveTargetTypeNameMatchPattern().matcher(type.simpleName().name()).matches();
+    protected String getMessage(Tree tree) {
+        return String.format("Refactor %1s to nor use html tags directly and let view template define the tags", targetTypeName);
     }
 
     private Pattern resolveTargetTypeNameMatchPattern() {

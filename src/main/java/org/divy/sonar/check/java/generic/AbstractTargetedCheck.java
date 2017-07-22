@@ -40,9 +40,9 @@ public abstract class AbstractTargetedCheck extends BaseTreeVisitor implements J
 
     boolean isTargetedChild(Tree tree) {
         Tree possibleClass = tree;
-        while (possibleClass.parent()!=null) {
+        while (possibleClass.parent() != null) {
             possibleClass = possibleClass.parent();
-            if(possibleClass.is(Tree.Kind.CLASS)) {
+            if (possibleClass.is(Tree.Kind.CLASS)) {
                 break;
             }
         }
@@ -50,6 +50,10 @@ public abstract class AbstractTargetedCheck extends BaseTreeVisitor implements J
         ClassTree classTree = (ClassTree) possibleClass;
 
         return isTargetedType(classTree);
+    }
+
+    protected boolean isAnnotatedWith(ClassTree it, String fullyQualifiedName) {
+        return it.symbol().metadata().isAnnotatedWith(fullyQualifiedName);
     }
 
     protected boolean isTargetedType(ClassTree type) {
