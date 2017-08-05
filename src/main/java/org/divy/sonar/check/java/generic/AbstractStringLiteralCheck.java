@@ -9,12 +9,6 @@ import java.util.regex.Pattern;
 public abstract class AbstractStringLiteralCheck extends AbstractTargetedCheck {
 
     @Override
-    public void scanFile(JavaFileScannerContext context) {
-        this.context = context;
-        scan(context.getTree());
-    }
-
-    @Override
     public void visitLiteral(LiteralTree tree) {
         if (tree.is(Tree.Kind.STRING_LITERAL) && isRestrictedLiteral(tree)) {
             context.reportIssue(this, tree, getMessage(tree));

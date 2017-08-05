@@ -6,7 +6,7 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 public class HybrisLoggingCheckTest {
 
   @Test
-  public void check() {
+  public void checkNoIssue() {
     JavaCheckVerifier.verify("src/test/files/MyCustomRule.java", new HybrisLoggingCheck());
   }
 

@@ -27,6 +27,9 @@ public class GenericStringLiteralCheck extends AbstractStringLiteralCheck {
     @RuleProperty(description = "Pattern to match the Architecture layer where the check needs to be performed")
     String targetTypeNameMatch;
 
+    @RuleProperty(description = "Does Pattern of the Architecture layer where the check needs to be performed needs to be Case-Sensitive?")
+    boolean isTargetTypeNameMatchCaseSensitive;
+
     private Pattern targetTypeNameMatchPattern;
 
     @RuleProperty(description = "Pattern to match the String literal", defaultValue = HTML_PATTERN)
@@ -57,7 +60,11 @@ public class GenericStringLiteralCheck extends AbstractStringLiteralCheck {
 
     private Pattern resolveTargetTypeNameMatchPattern() {
         if (targetTypeNameMatchPattern == null) {
-            targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch);
+        	if (isTargetTypeNameMatchCaseSensitive){
+        		targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch);
+        	} else {
+        		targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch, Pattern.CASE_INSENSITIVE);
+        	}
         }
         return targetTypeNameMatchPattern;
     }
@@ -65,6 +72,10 @@ public class GenericStringLiteralCheck extends AbstractStringLiteralCheck {
     public void setTargetTypeNameMatch(String targetTypeNameMatch) {
         this.targetTypeNameMatch = targetTypeNameMatch;
     }
+
+    public void setTargetTypeNameMatchCaseSensitive(boolean isTargetTypeNameMatchCaseSensitive) {
+		this.isTargetTypeNameMatchCaseSensitive = isTargetTypeNameMatchCaseSensitive;
+	}
 
     public void setTargetTypeName(String targetTypeName) {
         this.targetTypeName = targetTypeName;
