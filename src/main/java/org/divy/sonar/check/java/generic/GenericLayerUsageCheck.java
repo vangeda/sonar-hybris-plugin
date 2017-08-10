@@ -24,12 +24,17 @@ public class GenericLayerUsageCheck extends AbstractLayerUsageCheck {
     @RuleProperty(description = "Pattern to match the Architecture layer where the check needs to be performed")
     String targetTypeNameMatch;
 
+    @RuleProperty(description = "Does Pattern of the Architecture layer where the check needs to be performed needs to be Case-Sensitive?")
+    boolean isTargetTypeNameMatchCaseSensitive;
+
     @RuleProperty(description = "Human readable name of Architecture layer where the check needs to be performed")
     String targetTypeName;
 
     @RuleProperty(description = "Pattern to match restricted layer to be checked")
     String restrictedTypeNameMatch;
 
+    @RuleProperty(description = "Does Pattern of restricted layer to be checked needs to be Case-Sensitive?")
+    boolean isRestrictedTypeNameMatchCaseSensitve;
 
     @RuleProperty(description = "Human readable name of restricted layer")
     String restrictedTypeName;
@@ -56,14 +61,22 @@ public class GenericLayerUsageCheck extends AbstractLayerUsageCheck {
 
     private Pattern resolveRestrictedTypeNameMatchPattern() {
         if (restrictedTypeNameMatchPattern == null) {
-            restrictedTypeNameMatchPattern = Pattern.compile(restrictedTypeNameMatch);
+        	if (isRestrictedTypeNameMatchCaseSensitve) {
+        		restrictedTypeNameMatchPattern = Pattern.compile(restrictedTypeNameMatch);
+        	} else {
+        		restrictedTypeNameMatchPattern = Pattern.compile(restrictedTypeNameMatch, Pattern.CASE_INSENSITIVE);
+        	}
         }
         return restrictedTypeNameMatchPattern;
     }
 
     private Pattern resolveTargetTypeNameMatchPattern() {
         if (targetTypeNameMatchPattern == null) {
-            targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch);
+        	if (isTargetTypeNameMatchCaseSensitive) {
+        		targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch);
+        	} else {
+        		targetTypeNameMatchPattern = Pattern.compile(targetTypeNameMatch, Pattern.CASE_INSENSITIVE);
+        	}
         }
         return targetTypeNameMatchPattern;
     }
@@ -80,7 +93,17 @@ public class GenericLayerUsageCheck extends AbstractLayerUsageCheck {
         this.targetTypeName = targetTypeName;
     }
 
-    public void setRestrictedTypeName(String restrictedTypeName) {
+    public void setTargetTypeNameMatchCaseSensitive(boolean isTargetTypeNameMatchCaseSensitive) {
+		this.isTargetTypeNameMatchCaseSensitive = isTargetTypeNameMatchCaseSensitive;
+	}
+
+
+	public void setRestrictedTypeNameMatchCaseSensitve(boolean isRestrictedTypeNameMatchCaseSensitve) {
+		this.isRestrictedTypeNameMatchCaseSensitve = isRestrictedTypeNameMatchCaseSensitve;
+	}
+
+
+	public void setRestrictedTypeName(String restrictedTypeName) {
         this.restrictedTypeName = restrictedTypeName;
     }
 }

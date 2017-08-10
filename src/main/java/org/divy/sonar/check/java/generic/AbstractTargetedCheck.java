@@ -8,15 +8,7 @@ import org.sonar.plugins.java.api.tree.*;
 
 import java.util.List;
 
-public abstract class AbstractTargetedCheck extends BaseTreeVisitor implements JavaFileScanner {
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    protected JavaFileScannerContext context;
-
-    @Override
-    public void scanFile(JavaFileScannerContext context) {
-        this.context = context;
-        scan(context.getTree());
-    }
+public abstract class AbstractTargetedCheck extends AbstractCheck {
 
     @Override
     public void visitClass(ClassTree tree) {
@@ -50,10 +42,6 @@ public abstract class AbstractTargetedCheck extends BaseTreeVisitor implements J
         ClassTree classTree = (ClassTree) possibleClass;
 
         return isTargetedType(classTree);
-    }
-
-    protected boolean isAnnotatedWith(ClassTree it, String fullyQualifiedName) {
-        return it.symbol().metadata().isAnnotatedWith(fullyQualifiedName);
     }
 
     protected boolean isTargetedType(ClassTree type) {
